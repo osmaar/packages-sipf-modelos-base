@@ -1,0 +1,20 @@
+# Ignora la carpeta vendor (que se genera con composer install)
+vendor/
+
+# Ignora archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de Composer
+composer.lock
+
+# Archivos de PHPStorm / JetBrains
+.idea/
+
+# Cache de Laravel (si aplicara)
+bootstrap/cache/
+storage/*.key
+.env
+
+# Logs
+*.log

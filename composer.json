@@ -1,0 +1,25 @@
+{
+  "name": "sipf/modelos-base",
+  "description": "Modelos Eloquent compartidos del sistema SIPF",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Sipf\\ModelosBase\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^8.2",
+    "illuminate/database": "^10.0",
+    "illuminate/support": "^10.0"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Sipf\\ModelosBase\\ModelosBaseServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
