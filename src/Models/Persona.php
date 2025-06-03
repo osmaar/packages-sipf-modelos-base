@@ -4,7 +4,7 @@ namespace Sipf\ModelosBase\Models;
 
 use DateTime;
 use DateTimeZone;
-use App\Models\Traits\Searchable;
+use Sipf\ModelosBase\Traits\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Sipf\ModelosBase\Models\CatalogosFlexFields\Escolaridad;

@@ -1,20 +1,58 @@
-# Ignora la carpeta vendor (que se genera con composer install)
+# Carpeta vendor (composer install la regenera)
 vendor/
 
-# Ignora archivos del sistema
+# Archivos de sistema
 .DS_Store
 Thumbs.db
 
 # Archivos de Composer
 composer.lock
+composer.phar
 
-# Archivos de PHPStorm / JetBrains
+# Archivos de entorno Laravel o pruebas
+.env
+.env.*.backup
+.env.*.example
+
+# Archivos de IDEs y editores
 .idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos de PHPUnit
+phpunit.result.cache
 
 # Cache de Laravel (si aplicara)
 bootstrap/cache/
 storage/*.key
-.env
+storage/logs/
+storage/framework/cache/
+storage/framework/views/
+storage/framework/sessions/
 
 # Logs
 *.log
+
+# Archivos de coverage o profiling
+coverage/
+.phpunit.cache/
+
+# Node (si algún día usas mix o js dentro)
+node_modules/
+public/hot
+public/storage
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Archivos temporales
+*.swp
+*.tmp
+*.bak
+*.old
+*.orig
+
+# Archivos de sistema Windows
+ehthumbs.db
+Desktop.ini
