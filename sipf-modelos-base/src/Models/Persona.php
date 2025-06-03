@@ -20,6 +20,7 @@ use Sipf\ModelosBase\Models\Tecnico\PlanActividadesPPL\EntrevistaLaboral;
 use Sipf\ModelosBase\Models\Tecnico\Seguridad\Incidentes\IncidenteInvolucrado;
 use Sipf\ModelosBase\Models\Tecnico\TrabajoSocial\Comunicacion\Correspondencia\SolicitudEnvio;
 use Sipf\ModelosBase\Models\Tecnico\TrabajoSocial\Pases\Pase;
+use Sipf\ModelosBase\Contracts\TokenProviderInterface;
 
 class Persona extends FFV
 {
@@ -35,7 +36,6 @@ class Persona extends FFV
   ];
 
   protected $fillable = [
-    //'id', habilitar para poder agregar id manualmente temporales, se debe quitar para que se genere automaticamente autoincremental
     'nombre',
     'primer_apellido',
     'segundo_apellido',
@@ -134,10 +134,9 @@ class Persona extends FFV
     return $this->hasMany(AnalisisRiesgo::class, 'persona_id');
   }
 
-  public function expedienteCentroSesion()
+  public function expedienteCentroSesion(TokenProviderInterface $tokenProvider)
   {
-    $token = TokenService::get();
-    $centro_id = $token["centro"];
+    $centro_id = $tokenProvider->getCentroId();
     return $this->hasOne(Expediente::class, 'persona_id', 'id')
       ->where("centro_id", "=", $centro_id)->orderBy("id", "desc");
   }
@@ -153,10 +152,9 @@ class Persona extends FFV
     return 'Módulo: ' . $this->ubicacion_modulo . ' Sección: ' . $this->ubicacion_seccion . ' Estancia: ' . $this->ubicacion_estancia . ' Dormitorio: ' . $this->ubicacion_dormitorio;
   }
 
-  public function ubicacion2()
+  public function ubicacion2(TokenProviderInterface $tokenProvider)
   {
-    $token = TokenService::get();
-    $centro_id = $token["centro"];
+    $tokenProvider->getCentroId();
     return $this->hasOne(UbicacionReubicacion::class, 'persona_id', 'id')->orderBy("id", "desc");
   }
 

@@ -2,11 +2,11 @@
 
 namespace Sipf\ModelosBase\Models\Tecnico\Seguridad\PaseDeLista;
 
-use App\Services\LugarMap;
 use Sipf\ModelosBase\Models\Centro;
 use Sipf\ModelosBase\Models\Persona;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Sipf\ModelosBase\Contracts\LugarMapInterface;
 use Sipf\ModelosBase\Models\Ubicaciones\CentroCama;
 use Sipf\ModelosBase\Models\Ubicaciones\CentroModulo;
 use Sipf\ModelosBase\Models\Ubicaciones\CentroSeccion;
@@ -125,9 +125,9 @@ class VistaReglaUbicacion extends Model
    *
    * @return string|null
    */
-  public function getLugarNombreAttribute()
+  public function getLugarNombreAttribute(LugarMapInterface $map): ?string
   {
-    return LugarMap::getDescripcion($this->lugar);
+    return $map->getDescripcion($this->lugar_id);
   }
 
   /**
@@ -137,9 +137,9 @@ class VistaReglaUbicacion extends Model
    * @param string $descripcion
    * @return \Illuminate\Database\Eloquent\Builder
    */
-  public function scopeLugarNombre($query, string $descripcion)
+  public function scopeLugarNombre($query, string $descripcion, LugarMapInterface $map)
   {
-    $lugarId = LugarMap::getId($descripcion);
+    $lugarId = $map->getId($descripcion);
     if ($lugarId !== null) {
       return $query->where('lugar', $lugarId);
     }

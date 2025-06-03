@@ -1,8 +1,19 @@
 {
   "name": "sipf/modelos-base",
   "description": "Modelos Eloquent compartidos del sistema SIPF",
+  "keywords": [
+    "laravel",
+    "eloquent",
+    "modelos",
+    "sipf"
+  ],
   "type": "library",
   "license": "MIT",
+  "authors": [
+    {
+      "name": "Osmar López Islas"
+    }
+  ],
   "autoload": {
     "psr-4": {
       "Sipf\\ModelosBase\\": "src/"
@@ -12,6 +23,14 @@
     "php": "^8.2",
     "illuminate/database": "^10.0",
     "illuminate/support": "^10.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.0"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Sipf\\ModelosBase\\Tests\\": "tests/"
+    }
   },
   "extra": {
     "laravel": {
